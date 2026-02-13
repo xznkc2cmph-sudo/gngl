@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过年攻略 - 上海杭州之旅</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #d63031 0%, #e17055 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .password-box {
+            background: white;
+            padding: 50px 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .password-box h2 {
+            color: #d63031;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .password-box .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .password-box p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95em;
+        }
+
+        .password-input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .password-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ffe8e8;
+            border-radius: 10px;
+            font-size: 1.1em;
+            text-align: center;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .password-box input:focus {
+            outline: none;
+            border-color: #d63031;
+            box-shadow: 0 0 0 3px rgba(214, 48, 49, 0.1);
+        }
+
+        .password-box button {
+            width: 100%;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #d63031 0%, #e17055 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .password-box button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(214, 48, 49, 0.4);
+        }
+
+        .password-box button:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #d63031;
+            font-size: 0.9em;
+            margin-top: 15px;
+            display: none;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .content-wrapper {
+            display: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #d63031 0%, #e17055 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(214, 48, 49, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '🧧';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.1;
+            top: -20px;
+            right: 20px;
+        }
+
+        header::after {
+            content: '🏮';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            bottom: -20px;
+            left: 20px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #d63031 0%, #e17055 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .day-number {
+            background: rgba(255,255,255,0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .day-title {
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .day-content {
+            padding: 25px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            color: #d63031;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ffe8e8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: #d63031;
+            border-radius: 2px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #d63031;
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff9f9 0%, #fff0f0 100%);
+            border-left: 4px solid #d63031;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .train-info {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        .train-info strong {
+            font-size: 1.1em;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            padding: 12px 18px;
+            border-radius: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .contact-card strong {
+            color: #d63031;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background: linear-gradient(135deg, #d63031 0%, #e17055 100%);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: #fff9f9;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+
+        .tag-red { background: #ffe8e8; color: #d63031; }
+        .tag-blue { background: #e3f2fd; color: #0984e3; }
+        .tag-green { background: #e8f5e9; color: #27ae60; }
+        .tag-orange { background: #fff3e0; color: #e67e22; }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 18px;
+            margin: 10px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning::before {
+            content: '⚠️ ';
+        }
+
+        .star-rating {
+            color: #ffc107;
+            font-size: 1.1em;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #d63031, #e17055);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: #d63031;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 3px #d63031;
+        }
+
+        .time-badge {
+            background: linear-gradient(135deg, #d63031 0%, #e17055 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .footer span {
+            color: #d63031;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .day-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            th, td {
+                padding: 8px 10px;
+            }
+
+            .contact-card {
+                display: block;
+                margin: 8px 0;
+            }
+
+            .password-box {
+                padding: 30px 40px;
+            }
+        }
+
+        .emoji-icon {
+            font-size: 1.3em;
+            margin-right: 8px;
+        }
+
+        .price-tag {
+            background: #27ae60;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .route-arrow {
+            color: #d63031;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+        }
+
+        .info-card h4 {
+            color: #d63031;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="password-overlay" id="passwordOverlay">
+        <div class="password-box">
+            <div class="icon">🔒</div>
+            <h2>私密内容</h2>
+            <p>请输入访问密码以查看过年攻略</p>
+            <div class="password-input-group">
+                <input type="password" id="passwordInput" placeholder="请输入密码" maxlength="20" autocomplete="off">
+            </div>
+            <button onclick="checkPassword()">确认访问</button>
+            <div class="error-message" id="errorMessage">密码错误，请重新输入</div>
+        </div>
+    </div>
+
+    <div class="content-wrapper" id="contentWrapper">
+    <div class="container">
+        <header>
+            <h1>🎊 过年攻略 🎊</h1>
+            <p class="subtitle">2025年春节 · 上海杭州家庭之旅</p>
+        </header>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-number">1</div>
+                <div class="day-title">2月14日 · 出发准备</div>
+            </div>
+            <div class="day-content">
+                <div class="section">
+                    <div class="section-title">收拾行李清单</div>
+                    <ul>
+                        <li>身份证 <strong>6个</strong></li>
+                        <li>手机及充电器 <strong>5个</strong></li>
+                        <li>电话手表及充电器 <strong>1个</strong></li>
+                        <li>充电宝（需3C认证）</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <div class="section-title">行李箱分配</div>
+                    <div class="grid-2">
+                        <div class="info-card">
+                            <h4>🧳 20寸箱子 × 3</h4>
+                            <ul>
+                                <li><span class="tag tag-red">白色</span> 我和赵雅</li>
+                                <li><span class="tag tag-blue">灰色</span> 俩姑娘</li>
+                                <li><span class="tag tag-orange">红色</span> 爸妈</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h4>📞 预约包车</h4>
+                            <p>济源→焦作 7座包车</p>
+                            <div class="contact-card">
+                                <strong>电话：</strong>17303891000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <strong>💡 提醒：</strong>晚上9点30前睡觉，养足精神！
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-number">2</div>
+                <div class="day-title">2月15日 · 启程日</div>
+            </div>
+            <div class="day-content">
+                <div class="section">
+                    <div class="section-title">早晨行程</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="time-badge">4:30</span> 起床
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">5:30</span> 出发（约1.5小时车程）
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">7:00</span> 到达车站
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-title">高铁信息</div>
+                    <div class="train-info">
+                        <strong>D2774</strong> 7:44 → 11:38 &nbsp;|&nbsp; 3车3排
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-title">到达后包车联系</div>
+                    <div class="contact-card">
+                        <strong>璐宝：</strong>15234943032（GL8）
+                    </div>
+                    <div class="contact-card">
+                        <strong>李师傅：</strong>5座拖底
+                    </div>
+                    <p style="margin-top: 10px; color: #666;">预计12:30到达目的地</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-number">3</div>
+                <div class="day-title">2月16日 · 过渡日</div>
+            </div>
+            <div class="day-content">
+                <div class="section">
+                    <div class="section-title">上午包车到机场</div>
+                    <div class="grid-2">
+                        <div class="info-card">
+                            <h4>🚗 白师傅</h4>
+                            <p>电话：13643643000</p>
+                            <p>车型：宝骏730</p>
+                            <p>费用：<span class="price-tag">400元</span></p>
+                        </div>
+                        <div class="info-card">
+                            <h4>🚐 璐宝</h4>
+                            <p>电话：15234943032</p>
+                            <p>车型：GL8</p>
+                            <p>费用：<span class="price-tag">500元</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <strong>🏮 晚上：</strong>烧旺火，迎接新年！
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-number">4</div>
+                <div class="day-title">2月17日 · 飞往上海</div>
+            </div>
+            <div class="day-content">
+                <div class="section">
+                    <div class="section-title">行程安排</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="time-badge">17:00</span> 包车出发
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">19:00</span> 到达机场
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">20:00</span> 联系新爵皇家接机 <span style="color: #666;">021-50968900-0</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">20:45</span> 起飞
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">23:10</span> 抵达，入住新爵皇家酒店
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-number">5</div>
+                <div class="day-title">2月18日 · 上海一日游</div>
+            </div>
+            <div class="day-content">
+                <div class="section">
+                    <div class="section-title">早晨安排</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="time-badge">8:00</span> 起床
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">8:30</span> 早餐
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">9:00</span> 退房，打6座滴滴（约50分钟）
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-title">酒店信息</div>
+                    <div class="highlight-box">
+                        <strong>🏨 上海南泉大酒店</strong><br>
+                        陆家嘴塘桥地铁站店<br>
+                        10点后可入住，14:00离店
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-title">东方明珠游玩</div>
+                    <div class="grid-2">
+                        <div class="info-card">
+                            <h4>🎫 门票选择</h4>
+                            <p><span class="tag tag-green">推荐</span> 二球联票 <span class="price-tag">199元</span></p>
+                            <p style="font-size: 0.9em; color: #666; margin-top: 5px;">比三球联票(399元)性价比更高</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>🚇 交通</h4>
+                            <p>地铁2号线陆家嘴站1号口</p>
+                            <p style="font-size: 0.9em; color: #666;">出来直走即到</p>
+                        </div>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>观光层</th>
+                            <th>亮点</th>
+                        </tr>
+                        <tr>
+                            <td>90m户外观光廊</td>
+                            <td>拍陆家嘴全景</td>
+                        </tr>
+                        <tr>
+                            <td>259m全透明悬空观光廊</td>
+                            <td>踩玻璃拍脚下黄浦江，纵深感超绝</td>
+                        </tr>
+                        <tr>
+                            <td>263m主观光层</td>
+                            <td>俯瞰上海最佳点</td>
+                        </tr>
+                        <tr>
+                            <td>95m VR过山车</td>
+                            <td>需单独购票 <span class="price-tag">70元/人</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="section">
+                    <div class="section-title">📸 最佳拍照机位</div>
+                    <ul>
+                        <li><strong>明珠塔下台阶：</strong>手机广角低角度仰拍，塔身笔直高耸</li>
+                        <li><strong>陆家嘴天桥：</strong>以摩天楼为背景拍明珠塔，现代感拉满</li>
+                        <li><strong>259m悬空廊：</strong>坐地拍，自己和江面同框</li>
+                        <li><strong>263m主观光层：</strong>用长焦拍外滩万国建筑</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <div class="section-title">下午行程</div>
+                    <table>
+                        <tr>
+                            <th>时间</th>
+                            <th>行程</th>
+                            <th>备注</th>
+                        </tr>
+                        <tr>
+                            <td>10:30-11:30</td>
+                            <td>东方明珠拍照</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>中午</td>
+                            <td>正大广场B2层就餐</td>
+                            <td>步行7分钟</td>
+                        </tr>
+                        <tr>
+                            <td>下午</td>
+                            <td>东昌路码头 → 金陵东路码头</td>
+                            <td>轮渡 <span class="price-tag">2元</span></td>
+                        </tr>
+                        <tr>
+                            <td>13:30</td>
+                            <td>抵达金陵东路渡口</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>14:00</td>
+                            <td>豫园·城隍庙</td>
+                            <td>打车/公交约10分钟</td>
+                        </tr>
+                        <tr>
+                            <td>17:00</td>
+                            <td>南京东路步行街</td>
+                            <td>地铁14/10号线1站</td>
+                        </tr>
+                        <tr>
+                            <td>18:00</td>
+                            <td>外滩观景平台</td>
+                            <td>步行5分钟，看夜景亮灯</td>
+                        </tr>
+                        <tr>
+                            <td>19:00</td>
+                            <td>方案A：浦江游船 / 方案B：南京东路商圈</td>
+                            <td>根据体力选择</td>
+                        </tr>
+                        <tr>
+                            <td>20:30</td>
+                            <td>结束行程，返回酒店</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-number">6</div>
+                <div class="day-title">2月19日 · 上海→杭州</div>
+            </div>
+            <div class="day-content">
+                <div class="section">
+                    <div class="section-title">上午行程</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="time-badge">7:30</span> 起床
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">8:30</span> 退房，打车到上海南站（40分钟）
+                        </div>
+                    </div>
+                    <div class="train-info" style="margin-top: 15px;">
+                        <strong>C491</strong> 上海南 → 杭州 &nbsp;|&nbsp; 10:10 → 11:38 &nbsp;|&nbsp; 8车 9AC 10ACDF
+                    </div>
+                    <p style="margin-top: 10px;">打车到上城万科金色城品（9分钟），东西放房间</p>
+                </div>
+                <div class="section">
+                    <div class="section-title">午餐</div>
+                    <p>步行800米到河坊街吃饭</p>
+                </div>
+                <div class="section">
+                    <div class="section-title">下午：西湖游玩</div>
+                    <table>
+                        <tr>
+                            <th>时间段</th>
+                            <th>行程内容</th>
+                            <th>位置/交通</th>
+                            <th>费用(2老2小)</th>
+                        </tr>
+                        <tr>
+                            <td>13:30-13:50</td>
+                            <td>河坊街 → 少年宫码头</td>
+                            <td>打车约25元</td>
+                            <td>全程车内避风</td>
+                        </tr>
+                        <tr>
+                            <td>13:50-14:10</td>
+                            <td>少年宫游玩或直接登船</td>
+                            <td>游乐项目3-5元/项</td>
+                            <td>1.2m以下免票</td>
+                        </tr>
+                        <tr>
+                            <td>14:10-15:10</td>
+                            <td>🚢 西湖游船<br>少年宫→三潭印月→花港</td>
+                            <td>画舫（稳、有窗）</td>
+                            <td>成人70元<br>长者半价35元<br>儿童35元</td>
+                        </tr>
+                        <tr>
+                            <td>15:10-15:15</td>
+                            <td>花港码头 → 净慈寺</td>
+                            <td>观光车10元/人</td>
+                            <td>1.2m以下免票</td>
+                        </tr>
+                        <tr>
+                            <td>15:15-16:00</td>
+                            <td>🏯 净慈寺<br>撞钟+素面+拍雷峰塔</td>
+                            <td>门票10元<br>素面15元/碗</td>
+                            <td>钟楼撞钟10元/3下</td>
+                        </tr>
+                        <tr>
+                            <td>16:00-16:30</td>
+                            <td>🗼 雷峰塔电梯登顶</td>
+                            <td>成人40元<br>长者半价20元</td>
+                            <td>扶梯+垂直电梯</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="section">
+                    <div class="section-title">行程结束选择</div>
+                    <div class="grid-2">
+                        <div class="info-card">
+                            <h4>✅ 方案A（推荐）</h4>
+                            <p>直接回酒店</p>
+                            <p>雷峰塔门口打车回河坊街</p>
+                            <p>车费约30元</p>
+                            <p style="color: #27ae60; margin-top: 5px;">最推荐，保存体力</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>🌃 方案B</h4>
+                            <p>湖滨商圈晚餐+音乐喷泉</p>
+                            <p>打车至湖滨in77</p>
+                            <p>晚餐约200元</p>
+                            <p style="color: #666;">19:00西湖音乐喷泉（冬季仅一场）</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="warning">
+                    <strong>重要：</strong>冬季游船16:00停航，必须乘14:10班次！不建议登三潭印月岛（步行多、排队久）
+                </div>
+                <div class="section">
+                    <div class="section-title">📌 关键订票清单（2月18日完成）</div>
+                    <table>
+                        <tr>
+                            <th>项目</th>
+                            <th>操作方式</th>
+                            <th>截止时间</th>
+                        </tr>
+                        <tr>
+                            <td>西湖游船</td>
+                            <td>"西湖旅游"小程序/携程</td>
+                            <td>2月19日14:00前</td>
+                        </tr>
+                        <tr>
+                            <td>雷峰塔门票</td>
+                            <td>携程/美团/公众号</td>
+                            <td>16:00前游客中心换票</td>
+                        </tr>
+                        <tr>
+                            <td>净慈寺</td>
+                            <td>仅现场购票</td>
+                            <td>16:45停售</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-number">7</div>
+                <div class="day-title">2月20日 · 灵隐寺→云栖→宋城</div>
+            </div>
+            <div class="day-content">
+                <div class="section">
+                    <div class="section-title">上午：灵隐寺</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="time-badge">07:30-08:00</span> 酒店早餐 + 出发准备
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">08:00-08:40</span> 打车前往灵隐寺（约35-45元）
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">08:40-11:30</span> 🏯 灵隐寺游览（2.5小时慢游版）
+                        </div>
+                    </div>
+                    <div class="highlight-box" style="margin-top: 15px;">
+                        <strong>⚠️ 重要政策：</strong>2025.12.1起飞来峰景区免票，需提前实名预约！<br>
+                        预约渠道："杭州灵隐飞来峰"小程序，提前1天抢名额<br>
+                        建议携带证件备付香花券（30元，长者/儿童半价）
+                    </div>
+                    <table style="margin-top: 15px;">
+                        <tr>
+                            <th>核心路线</th>
+                            <th>说明</th>
+                        </tr>
+                        <tr>
+                            <td>天王殿 → 大雄宝殿 → 药王殿 → 华严殿</td>
+                            <td>全程不走回头路，无障碍通行</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 10px;">🍜 午餐：十方苑素面（30元/碗，汤鲜面软）</p>
+                </div>
+                <div class="section">
+                    <div class="section-title">中午：云栖竹径</div>
+                    <table>
+                        <tr>
+                            <th>时间</th>
+                            <th>行程</th>
+                            <th>费用</th>
+                        </tr>
+                        <tr>
+                            <td>11:30-11:50</td>
+                            <td>公交324/1314路 灵隐东→云栖竹径</td>
+                            <td>2元/人</td>
+                        </tr>
+                        <tr>
+                            <td>11:50-12:50</td>
+                            <td>🎋 云栖竹径景区（含云栖寺遗址）</td>
+                            <td>门票8元/人</td>
+                        </tr>
+                    </table>
+                    <div class="warning">
+                        云栖寺主体建筑已不存在，现为总工会休养所。竹林石径平缓，适合老人孩子1小时轻松散步。
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-title">下午：宋城景区</div>
+                    <table>
+                        <tr>
+                            <th>时间</th>
+                            <th>行程</th>
+                            <th>费用</th>
+                        </tr>
+                        <tr>
+                            <td>12:50-13:10</td>
+                            <td>公交324/1314路 云栖竹径→宋城景区</td>
+                            <td>2元/人</td>
+                        </tr>
+                        <tr>
+                            <td>13:10-17:30</td>
+                            <td>🎭 宋城景区 + 千古情演出</td>
+                            <td>门票180元/人<br>演出需单独购票</td>
+                        </tr>
+                        <tr>
+                            <td>17:30-18:30</td>
+                            <td>🍜 宋城晚餐（孙家正店或市井街小吃）</td>
+                            <td>人均50-80元</td>
+                        </tr>
+                        <tr>
+                            <td>18:30-19:30</td>
+                            <td>🌃 宋城夜景/返程</td>
+                            <td>打车回河坊街约50元</td>
+                        </tr>
+                    </table>
+                    <div class="highlight-box">
+                        <strong>💡 提示：</strong>宋城核心区域为室内演艺综合体，老人全程不吹风。千古情演出声光电效果强烈，幼儿可能怕黑怕响，建议备安抚物品。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-number">8</div>
+                <div class="day-title">2月21日 · 西溪湿地 / 胡雪岩故居</div>
+            </div>
+            <div class="day-content">
+                <div class="section">
+                    <div class="section-title">🔵 方案A：西溪国家湿地公园</div>
+                    <div class="grid-2">
+                        <div class="info-card">
+                            <h4>📍 地理位置</h4>
+                            <p>杭州城西，距河坊街约10公里</p>
+                            <p>打车30-40分钟</p>
+                            <p style="color: #d63031;">建议8:30前出发</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>⏰ 游玩时长</h4>
+                            <p>3-4小时（精华路线）</p>
+                            <p>周家村码头上船→深潭口下船→河渚街</p>
+                        </div>
+                    </div>
+                    <table style="margin-top: 15px;">
+                        <tr>
+                            <th>项目</th>
+                            <th>费用</th>
+                            <th>备注</th>
+                        </tr>
+                        <tr>
+                            <td>大门票</td>
+                            <td>80元/人</td>
+                            <td>60岁以上半价40元，1.2m以下免票</td>
+                        </tr>
+                        <tr>
+                            <td>电瓶船</td>
+                            <td>60元/人</td>
+                            <td>需提前3天预约</td>
+                        </tr>
+                        <tr>
+                            <td>摇橹船（推荐）</td>
+                            <td>100元/小时/船</td>
+                            <td>限乘6人，私密不拼船</td>
+                        </tr>
+                    </table>
+                    <div class="warning">
+                        <strong>必须提前3天预约！</strong>电瓶船每日限流5000人，通过"西溪湿地"官方公众号购票预约。
+                    </div>
+                    <div class="grid-2" style="margin-top: 15px;">
+                        <div class="info-card">
+                            <h4>👴 老人友好度 ⭐⭐</h4>
+                            <p>冬季湿地空旷风大，需戴帽子围巾</p>
+                            <p>摇橹船有顶棚、有棉帘</p>
+                            <p>下船后栈道约500-800米</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>👧 孩子友好度 ⭐⭐⭐⭐</h4>
+                            <p>坐船看芦苇荡、越冬水鸟</p>
+                            <p>河渚街有定胜糕、葱包烩等小吃</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <strong>备选：</strong>中国湿地博物馆（周家村主入口隔壁，免费，室内有暖气）
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-title">🟢 方案B：胡雪岩故居</div>
+                    <div class="grid-2">
+                        <div class="info-card">
+                            <h4>⏰ 游玩时长</h4>
+                            <p>2小时足够</p>
+                            <p>步行强度极低（约1500步）</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>🎫 门票</h4>
+                            <p>20元/人</p>
+                            <p>60岁以上半价10元</p>
+                            <p>1.2m以下免票</p>
+                        </div>
+                    </div>
+                    <div class="grid-2" style="margin-top: 15px;">
+                        <div class="info-card">
+                            <h4>👴 老人友好度 ⭐⭐⭐⭐⭐</h4>
+                            <p>全平缓动线、室内外随时可坐</p>
+                            <p>免费语音导览（公众号扫码）</p>
+                            <p>老人对"红顶商人"兴衰史有共鸣</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>👧 孩子友好度 ⭐⭐⭐</h4>
+                            <p>布置"寻宝任务"：找金丝楠木厅、秘密电话、地下金库</p>
+                            <p>假山区台阶多，老人严禁攀爬</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <strong>加项推荐：</strong>德寿宫遗址博物馆（出门步行5分钟，2025年新开放，免费，需现场扫码预约）
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-title">晚上安排</div>
+                    <div class="highlight-box">
+                        <strong>🏨 入住：</strong>开元名庭酒店<br>
+                        电话：0571-56123666<br>
+                        提前预约4:30送机，晚上8点入睡
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-number">9</div>
+                <div class="day-title">2月22日 · 返程日</div>
+            </div>
+            <div class="day-content">
+                <div class="section">
+                    <div class="section-title">早晨行程</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="time-badge">4:00</span> 起床
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">4:30</span> 退房出发
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">5:00</span> 到机场值机
+                        </div>
+                    </div>
+                    <div class="train-info" style="margin-top: 15px;">
+                        <strong>航班</strong> 6:50 → 9:00
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-title">返程包车</div>
+                    <div class="highlight-box">
+                        <strong>🚗 郑机场返回济源</strong><br>
+                        7座包车电话：<strong style="font-size: 1.2em;">5556666</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>🎊 祝全家旅途愉快，新年快乐！🎊</p>
+            <p style="margin-top: 10px;">制作时间：2025年春节</p>
+        </footer>
+    </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const correctPassword = 'ya';
+            
+            if (password === correctPassword) {
+                document.getElementById('passwordOverlay').style.display = 'none';
+                document.getElementById('contentWrapper').style.display = 'block';
+                localStorage.setItem('authenticated', 'true');
+            } else {
+                const errorMsg = document.getElementById('errorMessage');
+                errorMsg.style.display = 'block';
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
+                
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('authenticated') === 'true') {
+                document.getElementById('passwordOverlay').style.display = 'none';
+                document.getElementById('contentWrapper').style.display = 'block';
+            }
+            document.getElementById('passwordInput').focus();
+        });
+    </script>
+</body>
+</html>
